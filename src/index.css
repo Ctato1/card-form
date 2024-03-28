@@ -1,0 +1,19 @@
+/* tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.front-card {
+  background: linear-gradient(164deg, #6348fe 4.74%, #610595 88.83%);
+}
+.back-card {
+  background: linear-gradient(169deg, #fff 5%, #d2d3d9 91.69%);
+}
