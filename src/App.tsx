@@ -1,4 +1,5 @@
 import BackCard from "./components/BackCard";
+import Form from "./components/Form";
 import FrontCard from "./components/FrontCard";
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
           <FrontCard />
         </div>
       </section>
-      <main className="mt-[75px]">
-        TEST
+      <main className="mt-[75px] sm:mt-4 xl:mt-0 xl:w-[600px]  xl:mx-auto  xl:flex xl:justify-center xl:items-center">
+        <Form />
       </main>
     </div>
   );
