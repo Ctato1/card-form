@@ -1,7 +1,11 @@
-const FrontCard = () => {
+interface FrontCardProps{
+  name:string;
+}
+
+const FrontCard = ({name}:FrontCardProps) => {
   return (
     <section className="rounded-md front-card p-[19px] bg-gradient-to-r from-[#21092F] via-purple-800 to-purple-900 
-    w-[250px]
+    max-w-[280px]
     md:w-[300px]
     ">
       <svg
@@ -19,7 +23,7 @@ const FrontCard = () => {
       </svg>
       <h1 className="pt-[37px] tracking-[2.2px] text-white md:text-[18px]">0000 0000 0000 0000</h1>
       <div className="flex justify-between items-center pt-[17px]">
-        <p className="tracking-[1.2px] text-white text-[9px]">JANE APPLESEED</p>
+        <p className="tracking-[1.2px] text-white text-[9px]">{name || 'JANE APPLESEED'}</p>
         <span className="tracking-[1.2px] text-white text-[9px]">00/00</span>
       </div>
     </section>

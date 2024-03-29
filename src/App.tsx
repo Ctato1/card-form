@@ -1,22 +1,28 @@
+import { useState } from "react";
 import BackCard from "./components/BackCard";
 import Form from "./components/Form";
 import FrontCard from "./components/FrontCard";
 function App() {
+  const [name, setName] = useState<string>('');
+
+  console.log(name);
+  
   return (
     <div className="mx-auto  rounded-md md:flex">
-      <section className="bg-gradient-to-r from-[#21092F] via-purple-800 to-purple-900 px-4 h-[250px] w-full mx-auto
+      <section className="bg-gradient-to-tr from-[#21092F] via-purple-900 to-purple-800 px-4 h-[250px] w-full mx-auto
       md:w-[400px] md:mx-0 md:h-screen md:flex md:flex-col-reverse md:justify-center md:space-y-4
-      md:relative
+      md:relative md:bg-gradient-to-tr
+      flex justify-between flex-col
       ">
-        <div className="relative pt-[60px] pl-[3vw]  md:absolute md:bottom-[30vh] md:left-[15vw]">
+        <div className=" pt-[60px] pl-[3vw] self-end  md:absolute md:bottom-[30vh] md:left-[15vw]">
           <BackCard />
         </div>
-        <div className="relative z-10 mt-[-75px] md:absolute md:top-[20vh] md:left-[10vw]">
-          <FrontCard />
+        <div className=" z-10 mt-[-75px] ml-4 md:absolute md:top-[20vh] md:left-[10vw]">
+          <FrontCard name={name}/>
         </div>
       </section>
-      <main className="mt-[75px] sm:mt-4 xl:mt-0 xl:w-[600px]  xl:mx-auto  xl:flex xl:justify-center xl:items-center">
-        <Form />
+      <main className="w-full  md:mx-auto  md:flex md:justify-end md:items-center">
+        <Form setName={setName}/>
       </main>
     </div>
   );
