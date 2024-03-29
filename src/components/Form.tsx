@@ -1,8 +1,30 @@
 import "../styles/form.css";
+// types - interfaces for component
 interface FormProps {
   setName: (name: string) => void;
+  setNumber: (number: string) => void;
+  setCount: (number: number) => void;
+  count: number;
+  number: string;
 }
-const Form = ({ setName }: FormProps) => {
+const Form = ({ setName, setNumber, setCount, count, number }: FormProps) => {
+  function checkNumber(e: React.ChangeEvent<HTMLInputElement>) {
+    // stop after 16
+    if (
+      e.target.value
+        .split("")
+        .filter((el) => el !== " ")
+        .join("").length > 16
+    ) {
+      return;
+    }
+    // no string
+    const containsOnlyNumbers = /^[\d\s*]+$/.test(e.target.value);
+    if (containsOnlyNumbers) {
+      setNumber(e.target.value);
+      setCount(count + 1);
+    }
+  }
   return (
     <form className="mt-28 px-[24px] md:mt-0 md:w-[60%] md:float-right xl:w-[380px] xl:float-none">
       <div className="mt-[20px] flex flex-col">
@@ -21,6 +43,13 @@ const Form = ({ setName }: FormProps) => {
           type="text"
           placeholder="e.g. Jane Appleseed"
           className="input"
+          value={number}
+          onKeyUpCapture={(e) => {
+            if (e.key === "Backspace") {
+              setNumber(number.split('').slice(0, -1).join(''));
+            }
+          }}
+          onChange={(e) => { checkNumber(e)}}
         />
       </div>
 
