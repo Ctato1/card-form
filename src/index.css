@@ -11,7 +11,20 @@
 }
 
 .front-card {
-  background: linear-gradient(164deg, #6348fe 4.74%, #610595 88.83%);
+  /* background: linear-gradient(164deg, #6348fe 4.74%, #610595 88.83%); */
+  background-image: url('https://cdn.discordapp.com/attachments/1207361241635618846/1223280728943362059/bg-card-front.png?ex=661947f5&is=6606d2f5&hm=0156b2977db2ff957de82e2c815872affe41d7307b15da70da03a37ee5d1806f&');
+}
+.bg-resp{
+  background-image: url('https://cdn.discordapp.com/attachments/1207361241635618846/1223281932578848898/bg-main-mobile.png?ex=66194914&is=6606d414&hm=b97fc4b7821a3d8ac8aaee4d520b6dca57d4842d59a1e2a4f89958e2cbc87a36&');
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  height: 250px;
+}
+.bg-desk{
+  background-image: url('https://cdn.discordapp.com/attachments/1207361241635618846/1223281932578848898/bg-main-mobile.png?ex=66194914&is=6606d414&hm=b97fc4b7821a3d8ac8aaee4d520b6dca57d4842d59a1e2a4f89958e2cbc87a36&');
+  background-size: cover;
+  background-repeat: no-repeat !important;
+  height: 250px;
 }
 .back-card {
   background: linear-gradient(169deg, #fff 5%, #d2d3d9 91.69%);
