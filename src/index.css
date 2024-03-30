@@ -29,3 +29,7 @@
 .back-card {
   background: linear-gradient(169deg, #fff 5%, #d2d3d9 91.69%);
 }
+/* input number style -- no buttons */
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
