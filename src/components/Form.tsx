@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import "../styles/form.css";
 import { SubmitHandler, useForm } from "react-hook-form";
+import ValidCard from "./ValidCard";
 // types - interfaces for component
 interface FormProps {
   setName: (name: string) => void;
@@ -48,26 +50,37 @@ const Form = ({
       setCount(count + 1);
     }
   }
+
+  const [validate, setValidate] = useState<boolean>(false);
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
-    watch,
   } = useForm<FormField>();
 
-  const onSubmit: SubmitHandler<FormField> = async (data) => {
-    console.log(data);
-
+  const onSubmit: SubmitHandler<FormField> = async () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
+      setValidate(true);
     } catch (error) {
       // setError('name',{
       //   message:'This email is already taken'
       // })
     }
   };
-  return (
+  useEffect(() => {
+    if (!validate) {
+      setName("");
+      setNumber("");
+      setCount(0);
+      setMonth("");
+      setYear("");
+      setCvc("");
+      document.querySelectorAll("input").forEach((item) => (item.value = ""));
+    }
+  }, [validate]);
+
+  return !validate ? (
     <form
       className="mt-28 px-[24px] md:mt-0 md:w-[60%] md:float-right xl:w-[380px] xl:float-none"
       onSubmit={handleSubmit(onSubmit)}
@@ -139,7 +152,9 @@ const Form = ({
           }}
         />
         {errors.number && (
-          <div className="text-red-600 text-[12px]">{errors.number.message}</div>
+          <div className="text-red-600 text-[12px]">
+            {errors.number.message}
+          </div>
         )}
       </div>
 
@@ -154,7 +169,6 @@ const Form = ({
         </div>
         <ul className="flex justify-between gap-2 w-full">
           <li className="">
-       
             <input
               type="number"
               id="date"
@@ -179,7 +193,9 @@ const Form = ({
               }}
             />
             {errors.date && (
-              <div className="text-red-600 text-[12px]">{errors.date.message}</div>
+              <div className="text-red-600 text-[12px]">
+                {errors.date.message}
+              </div>
             )}
           </li>
           <li>
@@ -198,7 +214,9 @@ const Form = ({
               }}
             />
             {errors.year && (
-              <div className="text-red-600 text-[12px]">{errors.year.message}</div>
+              <div className="text-red-600 text-[12px]">
+                {errors.year.message}
+              </div>
             )}
           </li>
           <li>
@@ -222,7 +240,9 @@ const Form = ({
               }}
             />
             {errors.cvc && (
-              <div className="text-red-600 text-[12px]">{errors.cvc.message}</div>
+              <div className="text-red-600 text-[12px]">
+                {errors.cvc.message}
+              </div>
             )}
           </li>
         </ul>
@@ -230,11 +250,13 @@ const Form = ({
       <button
         type="submit"
         disabled={isSubmitting}
-        className="bg-[#21092F] text-white w-full mt-3 rounded-md py-1 mb-[10px]"
+        className="bg-[#21092F] text-white w-full mt-3 rounded-md py-2 mb-[10px] duration-200 hover:bg-[#441b5bce]"
       >
         {isSubmitting ? "Loading" : "Confirm"}
       </button>
     </form>
+  ) : (
+    <ValidCard setValidate={setValidate} />
   );
 };
 

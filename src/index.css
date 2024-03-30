@@ -33,3 +33,15 @@
 input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+.validate-card{
+  animation: 3s forwards alternate slidein;
+}
+@keyframes slidein {
+  from {
+    transform: translateY(-120px);
+  }
+
+  to {
+    transform: translateY(0px);
+  }
+}
