@@ -6,6 +6,7 @@ interface FormProps {
   setCount: (number: number) => void;
   setMonth: (number: string) => void;
   setYear: (number: string) => void;
+  setCvc: (number: string) => void;
   year: string;
   month: string;
   count: number;
@@ -20,7 +21,7 @@ const Form = ({
   setMonth,
   month,
   setYear,
-  year,
+  setCvc,
 }: FormProps) => {
   function checkNumber(e: React.ChangeEvent<HTMLInputElement>) {
     // stop after 16
@@ -124,6 +125,13 @@ const Form = ({
               id="cvc"
               placeholder="e.g. 123"
               className="input w-[40vw] md:w-[10vw] xl:w-full"
+              onChange={(e)=>{
+                if(e.target.value.length > 3){
+                  setCvc('')
+                  e.target.value = ''
+                }
+                setCvc(e.target.value)
+              }}
             />
           </li>
         </ul>
