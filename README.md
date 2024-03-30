@@ -1,4 +1,4 @@
-![alt text](https://ibb.co/hFBf84h)
+![myimage-alt-tag](https://ibb.co/hFBf84h)
 
 # React + TypeScript + Vite
 
