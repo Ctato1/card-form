@@ -1,4 +1,4 @@
-![alt text]([http://url/to/img.png](https://ibb.co/hFBf84h))
+![alt text](https://ibb.co/hFBf84h)
 
 # React + TypeScript + Vite
 
